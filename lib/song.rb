@@ -54,7 +54,6 @@ class Song
   def self.create_from_filename(filename)
     artist_song = filename.delete_suffix('.mp3')
     array = artist_song.split(' - ')
-   ## binding.pry
     song = self.new
     song.artist_name = array[0]
     song.name = array[1]
