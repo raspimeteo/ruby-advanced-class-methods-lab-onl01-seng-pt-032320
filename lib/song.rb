@@ -42,7 +42,7 @@ class Song
     @@all.sort_by{|s| s.name}
   end
  
-  def self.new_from_filename(filename)
+  def self.create_from_filename(filename)
     artist_song = filename.delete_suffix('.mp3')
     array = artist_song.split(' - ')
     name = array[1]
@@ -54,4 +54,5 @@ class Song
     song
   end
   
+
 end
