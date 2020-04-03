@@ -1,5 +1,6 @@
 class Song
   attr_accessor :name, :artist_name
+  
   @@all = []
  
   def self.all
@@ -44,12 +45,24 @@ class Song
   def self.new_from_filename(filename)
     artist_song = filename.delete_suffix('.mp3')
     array = artist_song.split(' - ')
-    name = array[1]
-    artist_name = array[0]
-    binding.pry
     song = self.new
-    song.artist_name = artist_name
-    song.name = name
+    song.artist_name = array[0]
+    song.name = array[1]
+    song
+  end
+   
+  def self.create_from_filename(filename)
+    artist_song = filename.delete_suffix('.mp3')
+    array = artist_song.split(' - ')
+    song = self.new
+    song.artist_name = array[0]
+    song.name = array[1]
+    song.save
+    song
   end
   
+  def self.destroy_all
+    @@all=[]
+  end
+
 end
